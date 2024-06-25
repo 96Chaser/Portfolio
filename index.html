@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Your IT Portfolio - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
 </head>
@@ -10,37 +11,26 @@
     <h1>Welcome to Your IT Portfolio</h1>
     <nav>
       <ul>
-        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="javascript:void(0);" onclick="showSection('home')">Home</a></li>
         <li class="dropdown">
           <a href="javascript:void(0);" class="dropbtn">Programming<span class="arrow">&#9662;</span></a>
           <div class="dropdown-content">
-            <a href="python.html">Python</a>
-            <a href="java.html">Java</a>
-            <!-- Add more dedicated page links for programming as needed -->
+            <a href="javascript:void(0);" onclick="showSection('python')">Python</a>
+            <a href="javascript:void(0);" onclick="showSection('java')">Java</a>
+            <a href="javascript:void(0);" onclick="showSection('javascript')">JavaScript</a>
+            <a href="javascript:void(0);" onclick="showSection('cpp')">C++</a>
+            <a href="javascript:void(0);" onclick="showSection('sql')">SQL</a>
+            <a href="javascript:void(0);" onclick="showSection('assembly')">Assembly</a>
           </div>
         </li>
-        <li class="dropdown">
-          <a href="javascript:void(0);" class="dropbtn">Game Development<span class="arrow">&#9662;</span></a>
-          <div class="dropdown-content">
-            <!-- Add dedicated page links for game development here -->
-          </div>
-        </li>
-        <li class="dropdown">
-          <a href="javascript:void(0);" class="dropbtn">Video Editing<span class="arrow">&#9662;</span></a>
-          <div class="dropdown-content">
-            <!-- Add dedicated page links for video editing here -->
-          </div>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="javascript:void(0);" onclick="showSection('game-development')">Game Development</a></li>
+        <li><a href="javascript:void(0);" onclick="showSection('video-editing')">Video Editing</a></li>
+        <li><a href="javascript:void(0);" onclick="showSection('contact')">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <div class="portrait-placeholder">
-    <img src="path/to/your/portrait.jpg" alt="Your Portrait" />
-  </div>
-
-  <section id="summary">
+  <section id="home" class="active">
     <div class="container">
       <h2>About Me</h2>
       <p>
@@ -61,9 +51,127 @@
     </div>
   </section>
 
+  <section id="python">
+    <div class="container">
+      <h2>Python Projects</h2>
+      <p>
+        Showcase your Python projects and provide descriptions for each project. You can include links, screenshots, or any other relevant information to showcase your work.
+      </p>
+      <!-- List of Python projects -->
+    </div>
+  </section>
+
+  <section id="java">
+    <div class="container">
+      <h2>Java Projects</h2>
+      <p>
+        Showcase your Java projects and provide descriptions for each project. You can include links, screenshots, or any other relevant information to showcase your work.
+      </p>
+      <!-- List of Java projects -->
+    </div>
+  </section>
+
+  <section id="javascript">
+    <div class="container">
+      <h2>JavaScript Projects</h2>
+      <p>
+        Showcase your JavaScript projects and provide descriptions for each project. You can include links, screenshots, or any other relevant information to showcase your work.
+      </p>
+      <!-- List of JavaScript projects -->
+    </div>
+  </section>
+
+  <section id="cpp">
+    <div class="container">
+      <h2>C++ Projects</h2>
+      <p>
+        Showcase your C++ projects and provide descriptions for each project. You can include links, screenshots, or any other relevant information to showcase your work.
+      </p>
+      <!-- List of C++ projects -->
+    </div>
+  </section>
+
+  <section id="sql">
+    <div class="container">
+      <h2>SQL Projects</h2>
+      <p>
+        Showcase your SQL projects and provide descriptions for each project. You can include links, screenshots, or any other relevant information to showcase your work.
+      </p>
+      <!-- List of SQL projects -->
+    </div>
+  </section>
+
+  <section id="assembly">
+    <div class="container">
+      <h2>Assembly Projects</h2>
+      <p>
+        Showcase your Assembly projects and provide descriptions for each project. You can include links, screenshots, or any other relevant information to showcase your work.
+      </p>
+      <!-- List of Assembly projects -->
+    </div>
+  </section>
+
+  <section id="game-development">
+    <div class="container">
+      <h2>Game Development Projects</h2>
+      <p>
+        Showcase your game development projects and provide descriptions for each project. You can include links, screenshots, or any other relevant information to showcase your work.
+      </p>
+      <!-- List of Game Development projects -->
+    </div>
+  </section>
+
+  <section id="video-editing">
+    <div class="container">
+      <h2>Video Editing Projects</h2>
+      <p>
+        Showcase your video editing projects and provide descriptions for each project. You can include links, screenshots, or any other relevant information to showcase your work.
+      </p>
+      <!-- List of Video Editing projects -->
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p>
+        You can get in touch with me using the contact form below or by connecting with me on social media.
+      </p>
+      <div class="contact-info">
+        <a href="https://www.facebook.com/yourusername" target="_blank">Facebook</a>
+        <a href="https://www.linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+      </div>
+      <form id="contact-form" action="contact.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+        <label for="reason">Reason for Contacting:</label>
+        <input type="text" id="reason" name="reason" placeholder="Reason for Contacting" required>
+
+        <label for="company">Company (if applicable):</label>
+        <input type="text" id="company" name="company" placeholder="Your Company">
+
+        <input type="submit" value="Send Request" class="btn">
+      </form>
+      <div id="form-response"></div>
+    </div>
+  </section>
+
   <footer>
     <p>&copy; 2023 Your IT Portfolio. All rights reserved.</p>
   </footer>
   <script src="script.js"></script>
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+  </script>
 </body>
 </html>

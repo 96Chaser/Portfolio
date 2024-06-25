@@ -5,6 +5,7 @@ body {
   padding: 0;
   background-color: #f5f5f5;
   color: #333;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -15,10 +16,14 @@ body {
 
 /* Header Styles */
 header {
-  background-color: #007bff;
+  background-color: #1e90ff;
   color: #fff;
   padding: 20px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s;
 }
 
 header h1 {
@@ -32,6 +37,7 @@ nav ul {
   padding: 0;
   display: flex;
   justify-content: center;
+  transition: padding 0.3s;
 }
 
 nav ul li {
@@ -43,12 +49,13 @@ nav ul li a {
   text-decoration: none;
   padding: 10px 15px;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-  background-color: #0056b3;
+  background-color: #ff4500;
+  transform: scale(1.1);
 }
 
 .dropdown-content {
@@ -65,101 +72,139 @@ nav ul li a.active {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #ff4500;
+  color: #fff;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Summary Section Styles */
-#summary {
+/* Section Styles */
+section {
+  display: none;
   padding: 50px 0;
   text-align: center;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
+  transition: opacity 0.5s;
 }
 
-#summary .container {
+section.active {
+  display: block;
+  opacity: 1;
+}
+
+section .container {
   max-width: 800px;
 }
 
-#summary h2 {
+section h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
+  color: #1e90ff;
 }
 
-/* Dedicated Pages Styles */
-.container h2 {
-  margin-top: 40px;
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  section {
+    padding: 20px 0;
+  }
+
+  section h2 {
+    font-size: 2rem;
+  }
 }
 
-/* Contact Section Styles */
-#contact {
-  padding: 50px 0;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.contact-info {
-  margin-bottom: 20px;
-}
-
-.contact-info a {
-  display: inline-block;
-  margin-right: 10px;
-  background-color: #007bff;
+/* Footer Styles */
+footer {
+  background-color: #1e90ff;
   color: #fff;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  padding: 20px;
+  text-align: center;
 }
 
-.contact-info a:hover {
-  background-color: #0056b3;
-}
-
-form {
-  margin-top: 20px;
-}
-
-form label {
-  display: block;
-  margin-top: 10px;
-  text-align: left;
-}
-
-form input,
-form textarea {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  width: 100%;
-  max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-form .btn {
-  background-color: #007bff;
+/* Button Styles */
+.btn {
+  background-color: #ff4500;
   color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-form .btn:hover {
-  background-color: #0056b3;
+.btn:hover {
+  background-color: #1e90ff;
+  transform: scale(1.1);
 }
 
-/* Footer Styles */
-footer {
-  background-color: #007bff;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
+/* Contact Form Styles */
+#contact {
+  padding: 50px 0;
+  background-color: #f9f9f9;
+}
+
+#contact .container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+#contact h2 {
+  color: #ff4500;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#contact-form label {
+  margin-top: 15px;
+  text-align: left;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+
+#contact-form .btn {
+  margin-top: 20px;
+  align-self: center;
+}
+
+#form-response {
+  margin-top: 20px;
+  color: #ff4500;
+  font-weight: bold;
 }

@@ -26,3 +26,39 @@ for (var i = 0; i < dropdownButtons.length; i++) {
 
 // Add event listener to handle click outside dropdown content
 window.addEventListener("click", handleOutsideDropdownClick);
+
+// Function to show a specific section
+function showSection(sectionId) {
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => {
+    section.classList.remove('active');
+  });
+  document.getElementById(sectionId).classList.add('active');
+}
+
+// Form validation and AJAX submission
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var reason = document.getElementById('reason').value;
+  var company = document.getElementById('company').value;
+
+  if (name && email && reason) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'contact.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        document.getElementById('form-response').innerText = xhr.responseText;
+      }
+    };
+
+    xhr.send('name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&reason=' + encodeURIComponent(reason) + '&company=' + encodeURIComponent(company));
+  } else {
+    document.getElementById('form-response').innerText = 'Please fill out all required fields.';
+  }
+});
+
