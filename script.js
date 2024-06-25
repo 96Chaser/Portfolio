@@ -61,4 +61,3 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     document.getElementById('form-response').innerText = 'Please fill out all required fields.';
   }
 });
-
