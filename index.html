@@ -11,21 +11,21 @@
     <h1>Welcome to Your IT Portfolio</h1>
     <nav>
       <ul>
-        <li><a href="javascript:void(0);" onclick="showSection('home')">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li class="dropdown">
-          <a href="javascript:void(0);" class="dropbtn">Programming<span class="arrow">&#9662;</span></a>
+          <a href="#" class="dropbtn">Programming<span class="arrow">&#9662;</span></a>
           <div class="dropdown-content">
-            <a href="javascript:void(0);" onclick="showSection('python')">Python</a>
-            <a href="javascript:void(0);" onclick="showSection('java')">Java</a>
-            <a href="javascript:void(0);" onclick="showSection('javascript')">JavaScript</a>
-            <a href="javascript:void(0);" onclick="showSection('cpp')">C++</a>
-            <a href="javascript:void(0);" onclick="showSection('sql')">SQL</a>
-            <a href="javascript:void(0);" onclick="showSection('assembly')">Assembly</a>
+            <a href="#python">Python</a>
+            <a href="#java">Java</a>
+            <a href="#javascript">JavaScript</a>
+            <a href="#cpp">C++</a>
+            <a href="#sql">SQL</a>
+            <a href="#assembly">Assembly</a>
           </div>
         </li>
-        <li><a href="javascript:void(0);" onclick="showSection('game-development')">Game Development</a></li>
-        <li><a href="javascript:void(0);" onclick="showSection('video-editing')">Video Editing</a></li>
-        <li><a href="javascript:void(0);" onclick="showSection('contact')">Contact</a></li>
+        <li><a href="#game-development">Game Development</a></li>
+        <li><a href="#video-editing">Video Editing</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -138,8 +138,8 @@
         You can get in touch with me using the contact form below or by connecting with me on social media.
       </p>
       <div class="contact-info">
-        <a href="https://www.facebook.com/yourusername" target="_blank">Facebook</a>
-        <a href="https://www.linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+        <a href="https://www.facebook.com/erikchase.thomas/" target="_blank">Facebook</a>
+        <a href="https://www.linkedin.com/in/erik-thomas-bbab40a3/" target="_blank">LinkedIn</a>
       </div>
       <form id="contact-form" action="contact.php" method="POST">
         <label for="name">Name:</label>
@@ -154,15 +154,78 @@
         <label for="company">Company (if applicable):</label>
         <input type="text" id="company" name="company" placeholder="Your Company">
 
+        <!-- NEW: Message -->
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" placeholder="Your message" rows="6" required></textarea>
+
+        <!-- Optional anti-spam honeypot -->
+        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"
+              style="position:absolute;left:-10000px;opacity:0" aria-hidden="true">
+
         <input type="submit" value="Send Request" class="btn">
       </form>
       <div id="form-response"></div>
-    </div>
+
   </section>
 
   <footer>
-    <p>&copy; 2023 Your IT Portfolio. All rights reserved.</p>
+    <p>&copy; 2025 Erik Thomas Portfolio. All rights reserved.</p>
   </footer>
+
+  <!-- Your existing JS -->
   <script src="script.js"></script>
+
+  <!-- Lightweight hash router + contact form autosave -->
+  <script>
+    (function () {
+      function showSection(id) {
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        const el = document.getElementById(id);
+        if (el) el.classList.add('active');
+      }
+
+      function handleHash() {
+        const id = (location.hash || '#home').slice(1);
+        showSection(id);
+      }
+
+      window.addEventListener('hashchange', handleHash);
+      document.addEventListener('DOMContentLoaded', handleHash);
+
+      // Preserve Contact form inputs for the current tab session
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+
+        const KEY = 'contactForm';
+        // Restore
+        try {
+          const saved = JSON.parse(sessionStorage.getItem(KEY) || '{}');
+          ['name', 'email', 'reason', 'company'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el && saved[id]) el.value = saved[id];
+          });
+        } catch (e) {}
+
+        // Save on input
+        form.addEventListener('input', function () {
+          const data = {};
+          ['name', 'email', 'reason', 'company'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) data[id] = el.value || '';
+          });
+          sessionStorage.setItem(KEY, JSON.stringify(data));
+        });
+
+        // Clear on successful submit or reset
+        form.addEventListener('submit', function () {
+          sessionStorage.removeItem(KEY);
+        });
+        form.addEventListener('reset', function () {
+          sessionStorage.removeItem(KEY);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
